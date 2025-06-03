@@ -27,6 +27,17 @@ Everything below ```fat-aar-android``` title is copied from the original repo.
     }
     ```
 
+- The [source](./source/) folder contains the main logic for using Fat AAR plugin. This plugin is added as a local dependency, not fetched online. Therefore, in the [settings.gradle](./example/settings.gradle), it's crucial to add this:
+
+    ```gradle
+    // Composite build for local FatAAR plugin development
+    includeBuild('../FatAAR/source') {
+        dependencySubstitution {
+            substitute module('com.github.kezong:fat-aar') using project(':')
+        }
+    }
+    ```
+
 # fat-aar-android
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aasitnikov/fat-aar-android/blob/master/LICENSE)
